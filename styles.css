@@ -1,427 +1,310 @@
-/*Maria Carpenter*/
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+/* Maria Carpenter — Wunderlust Majorca
+   Clean, responsive CSS following the prototype layout */
 
-
+/* ========== CSS RESET ========== */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu,
+nav, output, ruby, section, summary, time,
+mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
+
 body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    line-height: 1.5;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
 }
 
-
-/* Color Variables */
+/* ---------- ROOT COLORS ---------- */
 :root {
-  --yellow: #F6D64A;
-  --teal: #55BCD5;
-  --purple: #9B26B0;
-  --blue: #499BD2;
-  --dark-gray: #222222;
-  --light-gray: #EAEAEA;
-  --white: #FFFFFF;
-  --black: #000000;
-   --blue-gradient: linear-gradient(to bottom, #76cce0, #ffffff);
+    --sea-blue: #55BCD5;
+    --deep-blue: #499BD2;
+    --purple: #9B26B0;
+    --yellow: #F6D64A;
+    --white: #ffffff;
+    --light-gray: #f4f4f4;
+    --dark-gray: #222222;
+    --heading-font: "Molle", sans-serif;
+    --body-font: "Montserrat", Helvetica, Arial, sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Molle:ital@1&family=Montserrat&display=swap');
-
-
-
-/*applying Montserrat to body */
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--dark-gray);
-  background-color: var(--white);
+/* ---------- HEADER ---------- */
+header {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    background: linear-gradient(135deg, var(--sea-blue), var(--deep-blue));
+    border-bottom: 4px solid var(--yellow);
+    padding: 0.75rem 1rem 1rem;
+    gap: 1rem;
+    color: var(--dark-gray);
 }
 
-/*applying Molle (h1, h2, h3)*/
-h1, h2, h3 {
-  font-family: 'Molle', cursive;
-
-  line-height: 1.2;
-  margin-bottom: 0.5em;
+#logo img {
+    width: 80px;
+    display: block;
 }
 
-
-
-h1 {
-  font-size: 2rem;
-  color: var(--black);
-  margin-top: 1rem;
-}
-h2 {
-  font-size: 1.75rem;
-  color: var(--black);
-}
-h3 {
-  font-size: 1.5rem;
-  color: var(--black);
+.title-group {
+    text-align: center;
 }
 
-/* Montserrat (h4, p, q, small, nav, button, form) */
-
-h4 {
-  font-size: 1.2rem;
-  font-family: 'Montserrat', sans-serif;
-  color: var(--dark-gray);
-}
-
-p, label, input, select, textarea, button, nav, small, q, form{
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  color: var(--dark-gray);
-}
-
-
-/****************************** SMALL screen MOBILE-FIRST*****************************************/
-
-/* Header */
-
-header{
-  display:grid;
-  grid-template-columns: auto 1fr auto;
-  gap:.5rem 1rem;
-  align-items:center;
-  background: var(--blue-gradient);
-  padding: .75rem 1rem;
-}
-
-/*logo*/
-#logo img{ 
-  width:96px; height:auto; 
-}
-
-header h1{
-  font-family:'Molle', cursive;
-  font-size:1.8rem;
-  margin:0;
-}
-
-header > p{
-  grid-column: 2 / -1;
-  margin:0;
-  font-size:.95rem;
-}
-#menu-toggle label { 
-  display:inline-block; 
-  padding:.4rem .7rem; 
-  background: var(--white);
-  border:1px solid var(--light-gray);
-  border-radius:.35rem;
-  cursor:pointer;
-}
-#toggle { 
-  position:absolute; opacity:0; 
-}
-#menu-toggle ul {
-  display:none;
-  list-style:none;
-  margin:.75rem 0 0;
-  padding:0;
-  border-top:1px solid var(--light-gray);
-}
-#menu-toggle input:checked ~ ul { display:block; }
-#menu-toggle li a {
-  display:block;
-  padding:.6rem 0;
-  text-transform:uppercase;
-  font-weight:bold;
-  text-decoration:none;
-  color:var(--black);
-  background:transparent;
-}
-
-/* Intro */
-#intro{
-  padding: 1rem;
-  display:grid;
-  gap:1rem;
-}
-
-#intro h2{ 
-  margin:0 0 .25rem; 
-}
-#intro p{
-   margin:0; 
-  }
-
-
-/* mobile first  */
-#img-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-}
-#img-grid > * {
-  grid-column: 1 / -1;
-}
-#img-grid img,
-#img-grid picture img{
-  width:100%; 
-  height:auto; 
-  display:block; 
-  border-radius:.5rem;
-}
-
-/* Two columns on larger screens */
-@media (min-width: 600px) {
-  #img-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  #img-grid > *:nth-child(3) {
-    grid-column: 1 / -1;
-  }
-}
-
-
-/* PLAN – 2-up grid on phones */
-#plan{ 
-  background:var(--yellow); 
-  padding:2rem 1rem; 
-  text-align:center; 
-}
-#plan h3{
-   font-family:'Molle', cursive; 
-   margin:0 0 1rem; 
-  }
-/*TABLET*/
- @media (min-width: 600px){ 
-#plan > div{
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;  
+    .title-group h1 {
+        font-family: var(--heading-font);
+        font-style: italic;
+        font-size: 2rem;
+        color: var(--purple);
     }
- }
-/* DESKTOP and up: 4 columns */
-@media (min-width: 900px){
-  #plan > div{
-    grid-template-columns: repeat(4, 1fr);
-  }
+
+    .title-group p {
+        font-family: var(--body-font);
+        font-size: 1rem;
+        margin-top: 0.25rem;
+    }
+
+/* ---------- NAVIGATION ---------- */
+#menu-toggle {
+    grid-column: 1 / -1;
+    width: 100%;
+    background: var(--yellow);
+    text-align: center;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+    position: relative;
 }
 
-/* DESKTOP and up: 4 columns */
-@media (min-width: 900px){
-  #plan > div{
-    grid-template-columns: repeat(4, 1fr);
-  }
+    #menu-toggle input {
+        display: none;
+    }
+
+    #menu-toggle label {
+        display: block;
+        padding: 1rem;
+        font-weight: bold;
+        font-family: var(--body-font);
+        cursor: pointer;
+    }
+
+    #menu-toggle ul {
+        display: none;
+        background: var(--sea-blue);
+    }
+
+    #menu-toggle input:checked + label + ul {
+        display: block;
+    }
+
+    #menu-toggle li {
+        border-bottom: 1px solid var(--dark-gray);
+    }
+
+    #menu-toggle a {
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+        #menu-toggle a:hover {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+/* ---------- MAIN SECTIONS ---------- */
+#intro {
+    padding: 2rem 1rem;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--white), var(--light-gray));
 }
 
-#plan section{ 
-  background:var(--teal); 
-  color:var(--black); 
-  padding:1rem; 
-  border-radius:.75rem;
-  text-align: center; 
+/* ---------- IMAGE GRID ---------- */
+#img-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    justify-items: center;
+    margin-top: 1rem;
 }
-#plan img{
-   width:48px; 
-   margin:0 auto .5rem; 
-  }
-/* TESTIMONIALS */
-#testimonials{ 
-  padding:2rem 1rem; 
-  text-align:center;
- }
-#testimonials h3{ 
-  font-family:'Molle', cursive; 
-  margin:0 0 1rem; 
+
+    #img-grid img,
+    #img-grid picture {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+
+        #img-grid img:hover {
+            transform: scale(1.03);
+        }
+
+/* ---------- PLAN ---------- */
+#plan {
+    background: linear-gradient(to bottom, var(--yellow), var(--sea-blue));
+    padding: 2rem 1rem;
+    text-align: center;
 }
-#testimonials > div{
-   display:grid; gap:2rem; 
-  }
-#testimonials section img{
-   width:120px; 
-   height:120px; 
-   object-fit:cover; 
-   border-radius:50%; 
-   margin:0 auto .5rem;
-   }
-#testimonials h4{
-   text-transform:uppercase; 
-   font-weight:700; 
-   margin:.25rem 0 0; 
-  }
-#testimonials p{
-   margin:0; 
-   color:var(--dark-gray); 
-   font-size:.9rem; 
-  }
-#testimonials q{
-   display:block; 
-   font-style:italic; 
-   margin-top:.3rem; 
-  }
 
+    #plan section {
+        background: var(--deep-blue);
+        color: var(--white);
+        border: 3px solid var(--white);
+        border-radius: 10px;
+        padding: 1rem;
+        width: 90%;
+        max-width: 350px;
+        margin: 1rem auto;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
 
+/* ---------- TESTIMONIALS ---------- */
+#testimonials {
+    background: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+}
 
-/* ABOUT SMALL cards*/
+    #testimonials h3 {
+        color: var(--purple);
+        margin-bottom: 1rem;
+    }
+
+/* ---------- ABOUT ---------- */
 #about {
-  background: var(--blue);
-  color: var(--white);
-  padding: 2rem 1rem;
-  text-align: center;
+    background: linear-gradient(to bottom, var(--deep-blue), #2a5ca0);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
 }
 
-#about > div{
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;   
+/* ---------- CONTACT ---------- */
+#contact {
+    background: var(--light-gray);
+    padding: 2rem 1rem;
+    text-align: center;
 }
 
-#about section{
-  background: transparent;       
-  border: none;
-  padding: 1rem;
+    #contact form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: var(--white);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: var(--sea-blue);
+    color: var(--dark-gray);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-top: 4px solid var(--yellow);
 }
 
-#about img{
-  width: 64px;
-  height: auto;
-  display: block;
-  margin: 0 auto .5rem;
+    footer a {
+        color: var(--purple);
+        text-decoration: none;
+        margin: 0 0.5rem;
+        font-weight: bold;
+    }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+/* ---------- RESPONSIVE BEHAVIOR ---------- */
+
+/* Tablet (≥600px): 2 columns */
+@media (min-width: 600px) {
+    #img-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    #menu-toggle {
+        background: none;
+        text-align: right;
+        margin-top: 0;
+    }
+
+        #menu-toggle label {
+            background: var(--yellow);
+            border-radius: 0.25rem;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+        }
+
+        #menu-toggle ul {
+            position: absolute;
+            right: 1rem;
+            background: var(--white);
+            border: 2px solid var(--yellow);
+            border-radius: 0.5rem;
+            display: none;
+            padding: 0.5rem;
+        }
+
+        #menu-toggle input:checked + label + ul {
+            display: block;
+        }
+
+    #plan > div,
+    #testimonials > div,
+    #about > div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
 }
 
-#about h3{ 
-  font-family:'Molle', cursive; 
-  margin:0 0 1rem; 
-}
+/* Desktop (≥900px): 3 columns */
+@media (min-width: 900px) {
+    #img-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
 
-@media (min-width: 600px){
-  #about > div{ grid-template-columns: 1fr 1fr; }
-}
+    #menu-toggle ul {
+        display: flex !important;
+        gap: 2rem;
+        position: static;
+        background: none;
+        border: none;
+        padding: 0;
+    }
 
-@media (min-width: 900px){
-  #about > div{ grid-template-columns: repeat(4, 1fr); }
-}
+    #menu-toggle a:hover {
+        color: var(--yellow);
+        background: none;
+    }
 
-/* CONTACT */
-#contact{ 
-  padding:2rem 1rem; 
-}
-#contact h3{
-   font-family:'Molle', cursive; 
-  }
-label{ 
-  font-weight:700; 
-  text-transform:uppercase; 
-  font-size: 0.85rem;
- }
-input[type="text"], input[type="email"], input[type="tel"], select{
-  width:100%; 
-  padding:.6rem .7rem;
-   border:2px solid var(--purple); 
-   border-radius:4px;
-}
-
-.required{ 
-  color:var(--purple);
- }
-#mySubmit{
-  width:100%; 
-  padding:.75rem;
-  background:var(--purple); 
-  color:var(--white); border:0;   
-  border-radius:4px; font-weight:700;
-}
-/* Footer */
-footer{ 
-  background:var(--light-gray); 
-  text-align:center; 
-  padding:1rem; 
-  font-size: 0.9rem; 
-}
-footer a{ 
-  color:var(--dark-gray); 
-  margin:0 .5rem; 
-}
-
-/*Screen reader*/
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-  #menu-toggle{
-  justify-self:end;
-}
-#menu-toggle > label{
-  display:inline-block;
-  padding:.45rem 1rem;
-  background: var(--yellow);
-  color: var(--black);
-  border:0;
-  border-radius:.35rem;
-  font-weight:700;
-  text-transform:uppercase;
-  cursor:pointer;
-}
-
-#menu-toggle > ul { 
-  display:none; 
-  margin:.75rem 0 0; 
-  padding:0; 
-  list-style:none; 
-}
-#menu-toggle > input:checked + label + ul { 
-  display:block; 
-}
-#skip {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--black);
-  color: var(--white);
-  padding: 8px;
-  z-index: 100;
-}
-
-
-#skip:focus {
-  top: 0;
+    #plan > div,
+    #testimonials > div,
+    #about > div {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
